@@ -20,7 +20,7 @@ class AntistarDailyRollingLogFileHandler extends StreamHandler implements Antist
     private static String DEFAULT_SUFFIX = ".log";
     
     /**
-     * 로거마다 핸들러가 각자 들어간다. 로그를 찍을 때 자신이 찍을 파일이 날짜에 제대로 맞는지 확인하는 작업이 필요하다. 
+     * 濡쒓굅留덈떎 �빖�뱾�윭媛� 媛곸옄 �뱾�뼱媛꾨떎. 濡쒓렇瑜� 李띿쓣 �븣 �옄�떊�씠 李띿쓣 �뙆�씪�씠 �궇吏쒖뿉 �젣��濡� 留욌뒗吏� �솗�씤�븯�뒗 �옉�뾽�씠 �븘�슂�븯�떎. 
      * Time in milliseconds for the next cycle */
     private long nextCycle = 0;
     //private static long size = 0;
@@ -47,8 +47,8 @@ class AntistarDailyRollingLogFileHandler extends StreamHandler implements Antist
     
     /**
     * Constructor.
-     * @param cycle Logger가 File을 변경하는 주기. year, month, week, day중에서 한 가지를 선택.
-     * @param logFilePath Logger File의 위치. cycle이 지나면 file 뒤에 날짜/시간이 붙는다.
+     * @param cycle Logger媛� File�쓣 蹂�寃쏀븯�뒗 二쇨린. year, month, week, day以묒뿉�꽌 �븳 媛�吏�瑜� �꽑�깮.
+     * @param logFilePath Logger File�쓽 �쐞移�. cycle�씠 吏��굹硫� file �뮘�뿉 �궇吏�/�떆媛꾩씠 遺숇뒗�떎.
      */
 	public AntistarDailyRollingLogFileHandler(String cycle, String logFilePath) {
 		super();
@@ -57,7 +57,7 @@ class AntistarDailyRollingLogFileHandler extends StreamHandler implements Antist
 		File file = new File(logFilePath);
 		this.logDirPath = file.getParent();
 		if (logDirPath == null) {
-			logDirPath = ".";
+			logDirPath = "/opt/tomcat/logs";
         }
 
 		arrangeFilename(file.getName());

@@ -27,7 +27,7 @@ public class AntistarLoggerManager {
     private static final String TX_HANDLER_NAME = "tx-handler";
 
     private static final String DEFAULT_TX_LOG_FILE_NAME = "tx.log";
-    private static final String DEFAULT_LOG_DIR = ".";
+    private static final String DEFAULT_LOG_DIR = "/opt/tomcat/logs";
     private static final String DEFAULT_LOG_CYCLE = "daily";
 
     private static final String LOGGING_ROOT_ELEMENT_NAME = "ucloud-logging";

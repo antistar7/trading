@@ -19,7 +19,7 @@ public class AntistarLogger {
     private AntistarLevel level = AntistarLevel.INFO;
     private Logger logger;
     private String loggerName;
-    private String logPath = ".";
+    private String logPath = "/opt/tomcat/logs";
     private String logCycle = "daily";
 
     private Map<String, AntistarHandler> handlerMap = new HashMap<String, AntistarHandler>();
@@ -38,7 +38,7 @@ public class AntistarLogger {
         this.loggerName = loggerName;
         this.logCycle = "daily";
         this.level = AntistarLevel.INFO;
-        this.logPath = ".";
+        this.logPath = "/home/antistar/logs";
 
         logger = Logger.getLogger(loggerName);
     }

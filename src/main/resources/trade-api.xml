@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<api-setting>
+    <api-name>antistar</api-name>
+    <api-context>
+        <context class="net.antistar.trade.restful.context.TradeRestfulContext"/>
+    </api-context>
+    <api-list>
+        <api id="1001" method="GET" url="/code/[code]" action="net.antistar.trade.restful.action.TradeAction"/>
+    </api-list>
+</api-setting>
+

@@ -9,7 +9,7 @@
    <servlet-class>net.antistar.RestfulListenerServlet</servlet-class>
    <init-param>
        <param-name>api-xml</param-name>
-       <param-value>messenger-api.xml</param-value>
+       <param-value>trade-api.xml</param-value>
    </init-param>
 </servlet>
 
