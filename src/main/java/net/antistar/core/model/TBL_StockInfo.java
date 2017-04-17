@@ -16,7 +16,6 @@ public class TBL_StockInfo {
 	private double Per;
 	private long Volume;
 	private String JongName;
-	private int JongMok;
 	private long Money;
 	private double DungRak;
 	
@@ -40,7 +39,6 @@ public class TBL_StockInfo {
 		Per = copy.getPer();
 		Volume = copy.getVolume();
 		JongName = copy.getJongName();
-		JongMok = copy.getJongMok();
 		Money = copy.getMoney();
 		DungRak = copy.getDungRak();
 	}
@@ -155,18 +153,10 @@ public class TBL_StockInfo {
 		JongName = jongName;
 	}
 
-	public int getJongMok() {
-		return JongMok;
-	}
-
-	public void setJongMok(int jongMok) {
-		JongMok = jongMok;
-	}
-
 	public String toString() {
 		return 	StartJuka + "," + HighJuka + "," + UpJuka + "," + LowJuka + "," 
 	+ DownJuka + "," + Amount + "," + CurJuka + "," + PrevJuka + "," + FaceJuka + "," + Debi
-	 + "," + High52 + "," + Low52 + "," + Per + "," + Volume + "," + JongName + "," + JongMok
+	 + "," + High52 + "," + Low52 + "," + Per + "," + Volume + "," + JongName + "," 
 	  + "," + Money + "," + DungRak;
 	}
 }

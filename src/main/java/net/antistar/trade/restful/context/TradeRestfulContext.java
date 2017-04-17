@@ -1,6 +1,8 @@
 package net.antistar.trade.restful.context;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 import javax.servlet.ServletConfig;
 
@@ -26,7 +28,7 @@ public class TradeRestfulContext implements RestfulContext {
     }
 
     @Override
-    public void init(ServletConfig config) throws AntistarException { 
+    public void init(ServletConfig config) throws AntistarException, IOException, TimeoutException { 
     	File file = Config.getTradeConfigFromSystem();
     	TradeDBConnecter mTradeDBConnecter = new TradeDBConnecter(Config.getTradeUrl(file), Config.getTradePort(file), Config.getTradeDBName(file));
     	engine = new Engine(mTradeDBConnecter);

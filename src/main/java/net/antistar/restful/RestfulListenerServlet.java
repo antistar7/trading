@@ -21,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.concurrent.TimeoutException;
 import java.io.PrintWriter;
 
 /**
@@ -191,7 +192,13 @@ public class RestfulListenerServlet extends HttpServlet {
                 logger.fatal(e);
                 e.printStackTrace();
                 return;
-            }
+            } catch (IOException e) {
+            	logger.fatal(e);
+				e.printStackTrace();
+			} catch (TimeoutException e) {
+				logger.fatal(e);
+				e.printStackTrace();
+			}
         }
 
         isInitialized = true;

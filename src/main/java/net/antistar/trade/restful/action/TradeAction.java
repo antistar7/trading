@@ -31,6 +31,8 @@ public class TradeAction extends AbstractTradeAction {
 
     @Override
     protected void process(TxRecord record, Engine engine, Map<String, String> urlKeyMap, HttpServletRequest req, HttpServletResponse resp) throws UCloudHttpException,IOException {
+    	JSONObject TBL_stockInfo = null;
+    	
     	try {
     		resp.setContentType("text/plain;charset=UTF-8");
 			String code = urlKeyMap.get("code");
@@ -40,48 +42,21 @@ public class TradeAction extends AbstractTradeAction {
 			
 			JSONObject object = XML.toJSONObject(html);
 			JSONObject stock = (JSONObject)object.get("stockprice");
-			JSONObject TBL_stockInfo = (JSONObject)stock.get("TBL_StockInfo");
+			TBL_stockInfo = (JSONObject)stock.get("TBL_StockInfo");
+			TBL_stockInfo.put("jongmok", code);
+								
+			engine.sendMessage(TBL_stockInfo.toString(), code);
 			
-			JSONObject stockInfo = (JSONObject)stock.get("stockInfo");
-			JSONObject TBL_DailyStock = (JSONObject)stock.get("TBL_DailyStock");
-			JSONObject TBL_TimeConclude = (JSONObject)stock.get("TBL_TimeConclude");
-			JSONObject TBL_Hoga = (JSONObject)stock.get("TBL_Hoga");
-			JSONObject TBL_AskPrice = (JSONObject)stock.get("TBL_AskPrice");
+//			JSONObject stockInfo = (JSONObject)stock.get("stockInfo");
+//			JSONObject TBL_DailyStock = (JSONObject)stock.get("TBL_DailyStock");
+//			JSONObject TBL_TimeConclude = (JSONObject)stock.get("TBL_TimeConclude");
+//			JSONObject TBL_Hoga = (JSONObject)stock.get("TBL_Hoga");
+//			JSONObject TBL_AskPrice = (JSONObject)stock.get("TBL_AskPrice");
 			
-			TBL_StockInfo mTBL_stockInfo = new TBL_StockInfo();
-			
-			mTBL_stockInfo.setStartJuka(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("StartJuka"))));
-			logger.info("start juka : " + mTBL_stockInfo.getStartJuka());
-			mTBL_stockInfo.setCurJuka(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("CurJuka"))));
-			logger.info("Cur juka : " + mTBL_stockInfo.getCurJuka());
-			mTBL_stockInfo.setDownJuka(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("DownJuka"))));
-			logger.info("Down juka : " + mTBL_stockInfo.getDownJuka());
-			mTBL_stockInfo.setHighJuka(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("HighJuka"))));
-			logger.info("High juka : " + mTBL_stockInfo.getHighJuka());
-			mTBL_stockInfo.setLowJuka(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("LowJuka"))));
-			logger.info("Low juka : " + mTBL_stockInfo.getLowJuka());
-			mTBL_stockInfo.setPrevJuka(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("PrevJuka"))));
-			logger.info("Prev juka : " + mTBL_stockInfo.getPrevJuka());			
-			mTBL_stockInfo.setUpJuka(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("UpJuka"))));
-			logger.info("Up juka : " + mTBL_stockInfo.getUpJuka());
-			mTBL_stockInfo.setPer((Double)TBL_stockInfo.get("Per"));
-			logger.info("Per : " + mTBL_stockInfo.getPer());
-			mTBL_stockInfo.setFaceJuka((Integer)TBL_stockInfo.get("FaceJuka"));
-			logger.info("Face Juka : " + mTBL_stockInfo.getFaceJuka());
-			mTBL_stockInfo.setHigh52(Integer.parseInt(TradeUtils.ToNumeric((String) TBL_stockInfo.get("High52"))));
-			mTBL_stockInfo.setLow52(Integer.parseInt(TradeUtils.ToNumeric((String) TBL_stockInfo.get("Low52"))));
-			mTBL_stockInfo.setDebi(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("Debi"))));
-			mTBL_stockInfo.setAmount(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("Amount"))));
-			mTBL_stockInfo.setVolume(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("Volume"))));
-			mTBL_stockInfo.setMoney(Long.parseLong(TradeUtils.ToNumeric((String) TBL_stockInfo.get("Money"))));
-			mTBL_stockInfo.setDungRak((Integer)TBL_stockInfo.get("DungRak"));
-			mTBL_stockInfo.setJongName((String) TBL_stockInfo.get("JongName"));
-			mTBL_stockInfo.setJongMok(Integer.parseInt(code));
-
-			
-			resp.getWriter().print(mTBL_stockInfo.toString() + "\n" + TBL_stockInfo.toString());
+			resp.getWriter().print(TBL_stockInfo.toString());
     	} catch(Exception ex) {
     		ex.printStackTrace();
+    		resp.getWriter().print(TBL_stockInfo.toString());
     		logger.error(ex.getMessage(), ex);
     	}
     }
