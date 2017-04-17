@@ -156,7 +156,7 @@ public class TradeQueueConsumer extends DefaultConsumer {
 				if(TBL_stockInfo.get("DungRak").getClass().getName().contains("String"))
 					mTBL_stockInfo.setDungRak(Integer.parseInt(TradeUtils.ToNumeric((String) TBL_stockInfo.get("DungRak"))));
 				else
-					mTBL_stockInfo.setDungRak((Integer)TBL_stockInfo.get("Debi"));
+					mTBL_stockInfo.setDungRak((Integer)TBL_stockInfo.get("DungRak"));
 				logger.info("DungRak : " + mTBL_stockInfo.getDungRak());
 				
 				mTBL_stockInfo.setJongName((String) TBL_stockInfo.get("JongName"));
